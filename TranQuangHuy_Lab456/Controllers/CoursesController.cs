@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TranQuangHuy_Lab456.Models;
+using TranQuangHuy_Lab456.ViewModels;
 
 namespace TranQuangHuy_Lab456.Controllers
 {
@@ -17,7 +18,11 @@ namespace TranQuangHuy_Lab456.Controllers
         }
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new CourseViewModel
+            {
+                Categories = _dbContext.Categories.ToList()
+            };
+            return View(viewModel);
         }
     }
 }
